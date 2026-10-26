@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>حل التقييم الأسبوعي | الفيزياء · المقذوف الأفقي</title>
+<meta name="description" content="ملزمة الفيزياء — حل التقييم الأسبوعي: المقذوف الأفقي (الحركة في بُعدين). ١٥ سؤالًا في ثلاث مجموعات، كل سؤال بشكله وحله بالخطوات.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@600;700;800&family=Lalezar&family=Readex+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============ الهوية البصرية (مطابقة لألوان وخطوط الـ PDF الأصلي) ============ */
+:root{
+  --yellow:#FFD43B;        /* أصفر الإطار وبطاقة السؤال */
+  --burg:#7C1747;          /* بورجوندي */
+  --teal:#0E7C86;          /* فيروزي */
+  --ink:#1E1B1B;           /* حدود ونصوص العناوين */
+  --navy:#1F2A44;          /* نص خطوات الحل */
+  --fnavy:#0B3F5C;         /* القوانين داخل النص */
+  --fnavy2:#13293D;        /* قوانين داخل الكبسولات */
+  --cream:#FFF0B0;         /* كريمي المعطيات والبانر */
+  --paper:#FFFEFA;         /* الورقة الداخلية */
+  --stepbg:#FFFDF3;        /* خلفية خطوات الحل */
+  --note:#FFF9DD;          /* خلفية الملحوظات */
+  --gold:#D9C46A;          /* ذهبي الفواصل المنقطة */
+  --gold-l:#E6D58A;        /* ذهبي حدود البطاقات */
+  --green-bg:#DDF1E3;      /* أخضر الإجابة الصحيحة */
+  --green:#0F5A3B;         /* نص الإجابة */
+  --green-m:#2D7A56;
+  --brown:#4B4636;         /* نص الملحوظات */
+  --orange:#D98C5F;
+  --head:'Lalezar','Alexandria',sans-serif;
+  --body:'Readex Pro','Segoe UI',Tahoma,sans-serif;
+  --alex:'Alexandria','Readex Pro',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:#2B2430;color:var(--ink)}
+sub,sup{font-size:.68em}
+mark{background:var(--yellow);color:inherit;padding:0 .8mm;border-radius:.6mm}
+.svg-f,.svg-ar{font-family:var(--body)}
+
+/* ============ شريط أدوات الشاشة (لا يظهر في الطباعة) ============ */
+.toolbar{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:.6mm solid var(--yellow);
+  display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;padding:8px 16px;box-shadow:0 2px 14px rgba(0,0,0,.25)}
+.toolbar .tb-title{font-family:var(--head);font-size:19px;color:var(--burg)}
+.toolbar .tb-title small{color:var(--teal);font-size:14px}
+.toolbar nav{display:flex;gap:6px;flex-wrap:wrap;margin-inline-start:auto}
+.toolbar a,.toolbar button{font-family:var(--body);font-weight:600;font-size:13.5px;text-decoration:none;cursor:pointer;
+  color:var(--fnavy);background:#fff;border:1.6px solid var(--gold-l);border-radius:999px;padding:4px 14px}
+.toolbar a:hover,.toolbar button:hover{border-color:var(--teal);color:var(--teal)}
+.toolbar button.on{background:var(--burg);border-color:var(--burg);color:#fff}
+.toolbar .tb-print{background:var(--teal);border-color:var(--teal);color:#fff}
+
+/* ============ الصفحة A4 ============ */
+.scaler{margin:26px auto}
+.page{position:relative;width:210mm;height:297mm;margin:0 auto;background:var(--yellow);
+  overflow:hidden;box-shadow:0 8px 34px rgba(0,0,0,.45);scroll-margin-top:70px;flex:none}
+.corner{position:absolute;z-index:0}
+.c-tl{top:0;left:0;width:15mm;height:26mm;background:var(--teal);border-radius:0 0 5mm 0}
+.c-tr{top:0;right:0;width:20mm;height:11mm;background:var(--burg);border-radius:0 0 0 5mm}
+.c-br{bottom:0;right:0;width:36mm;height:11mm;background:var(--burg);border-radius:5mm 0 0 0}
+.sheet{position:absolute;inset:6mm 5.5mm;z-index:1;background:var(--paper);border:.65mm solid var(--ink);
+  border-radius:7mm;padding:4.5mm 7mm 4mm;display:flex;flex-direction:column}
+
+/* رأس الصفحة */
+.ph{display:flex;align-items:center;justify-content:space-between;padding-bottom:2.6mm;
+  border-bottom:.5mm dotted var(--gold)}
+.ph-pill{background:var(--yellow);border:.55mm solid var(--ink);border-radius:2.6mm;
+  box-shadow:.7mm .7mm 0 var(--burg);font-family:var(--head);font-size:12.5pt;padding:.6mm 4mm;line-height:1.5}
+.logo{display:block;border-radius:50%;background-image:url("%%LOGO%%");background-size:cover;background-position:center;
+  border:.55mm solid var(--teal);flex:none}
+.logo-s{width:11.5mm;height:11.5mm}
+.logo-m{width:17mm;height:17mm}
+.handle{font-family:var(--alex);font-weight:700;font-size:10.5pt;color:var(--teal)}
+
+/* ذيل الصفحة */
+.pf{display:flex;gap:3mm;align-items:stretch;margin-top:auto;padding-top:4mm}
+.pf-bar{flex:1;background:var(--teal);color:#fff;border-radius:3mm;box-shadow:0 1mm 0 var(--burg);
+  font-family:var(--head);font-size:14.5pt;display:flex;align-items:center;justify-content:center;padding:1mm 4mm;line-height:1.5}
+.pf-num{background:var(--burg);border:.6mm solid var(--ink);border-radius:4mm;display:flex;align-items:center;gap:2.5mm;padding:1.2mm 3mm}
+.pf-circle{background:var(--yellow);color:var(--burg);border-radius:50%;width:10.5mm;height:10.5mm;flex:none;
+  display:flex;align-items:center;justify-content:center;font-family:var(--head);font-size:15pt;line-height:1;padding-top:.8mm}
+.pf-grade{color:#fff;font-family:var(--head);font-size:10pt;line-height:1.35;text-align:center}
+
+/* محتوى الصفحة */
+.pc{display:flex;flex-direction:column;gap:4mm;padding-top:4.2mm}
+.group{align-self:center;background:var(--teal);color:#fff;font-family:var(--alex);font-weight:700;font-size:14pt;
+  border-radius:3.5mm;box-shadow:0 1mm 0 var(--burg);padding:1mm 12mm;line-height:1.6}
+
+/* بطاقة السؤال */
+.q{position:relative;background:var(--yellow);border:.6mm solid var(--ink);border-radius:6mm;
+  padding:6mm 6mm 4.5mm;margin-top:3.5mm}
+.q-num{position:absolute;top:-4.6mm;inset-inline-start:4mm;width:11.5mm;height:11.5mm;border-radius:50%;
+  background:var(--burg);color:#fff;border:.6mm solid var(--ink);display:flex;align-items:center;justify-content:center;
+  font-family:var(--head);font-size:16pt;line-height:1;padding-top:1mm}
+.q p{font-family:var(--head);font-size:15pt;line-height:1.85;color:var(--ink);padding-inline-start:9mm}
+.f{font-family:var(--body);font-weight:600;color:var(--fnavy);unicode-bidi:isolate;white-space:nowrap}
+
+/* الشكل + الاختيارات / المعطيات */
+.mid{display:grid;grid-template-columns:.92fr 1.18fr;gap:5mm;align-items:center}
+.diagram{background:#fff;border:.6mm solid var(--ink);border-radius:5mm;box-shadow:1.1mm 1.1mm 0 var(--burg);overflow:hidden}
+.diagram svg{display:block;width:100%;height:auto}
+.opts{display:flex;flex-direction:column;gap:2.6mm}
+.opt{display:flex;align-items:center;gap:3mm;background:#fff;border:.45mm solid #E7E3D6;border-radius:4mm;
+  padding:1.5mm 3mm;min-height:10.2mm;font-weight:600;font-size:12pt;color:var(--ink);line-height:1.8}
+.opt-k{flex:none;width:9mm;height:9mm;border-radius:50%;background:var(--teal);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-family:var(--head);font-size:13pt;line-height:1;padding-top:.7mm}
+.opt-t{flex:1}
+.opt .formula{flex:1;text-align:center;background:transparent;border:none;padding:0}
+.opt.correct{background:var(--green-bg);border-color:#9CCBA9;color:var(--green)}
+.opt.correct .opt-k{background:var(--green-m)}
+.tick{color:var(--green-m);font-weight:700;font-size:14pt;line-height:1;flex:none}
+
+/* بطاقة المعطيات */
+.givens{background:var(--cream);border:.55mm solid var(--ink);border-radius:5mm;padding:3.5mm 5mm 4mm}
+.givens h4{font-family:var(--head);font-size:13.5pt;color:var(--burg);line-height:1.6;margin-bottom:1mm}
+.g-row{display:flex;align-items:baseline;justify-content:space-between;gap:4mm;font-size:12pt;font-weight:500;color:#2E3440;line-height:2}
+.gv{font-weight:600;color:var(--fnavy);unicode-bidi:isolate;white-space:nowrap}
+.g-sep{border:none;border-top:.45mm dashed #C9B766;margin:1.8mm 0}
+.wanted{text-align:center;font-size:12.5pt;font-weight:500;color:var(--ink);line-height:1.9}
+.note{margin-top:3mm;background:var(--note);border-radius:3.5mm;border-inline-start:1.6mm solid #E8A15C;
+  padding:2.6mm 4mm;font-size:11pt;font-weight:500;color:var(--brown);line-height:1.95;text-align:center}
+.note .f{color:#6A5A2A}
+
+/* خطوات الحل */
+.steps{position:relative;background:var(--stepbg);border:.45mm solid var(--gold-l);border-radius:6mm;
+  padding:7.2mm 6mm 4mm;margin-top:4.6mm}
+.steps-h{position:absolute;top:-4.4mm;left:50%;transform:translateX(-50%);background:#fff;white-space:nowrap;
+  border:.55mm solid var(--ink);border-radius:999px;box-shadow:0 .8mm 0 var(--yellow);
+  font-family:var(--head);font-size:14.5pt;line-height:1.5;padding:.4mm 8mm}
+.step{display:flex;gap:3.5mm;margin-bottom:2.7mm}
+.step:last-child{margin-bottom:0}
+.step-n{flex:none;width:9mm;height:9mm;border-radius:50%;background:var(--teal);color:#fff;margin-top:1mm;
+  box-shadow:.5mm .5mm 0 var(--burg);display:flex;align-items:center;justify-content:center;
+  font-family:var(--head);font-size:13pt;line-height:1;padding-top:.7mm}
+.step-b{flex:1;font-size:12.5pt;font-weight:500;color:var(--navy);line-height:2}
+.step-b .f{color:var(--fnavy2)}
+.f-row{text-align:center;margin:1.3mm 0}
+.formula{display:inline-block;background:#fff;border:.45mm dashed var(--gold);border-radius:3.5mm;
+  padding:.8mm 6mm;font-weight:600;font-size:12.5pt;color:var(--fnavy2);unicode-bidi:isolate;line-height:1.9}
+
+/* شريط الإجابة */
+.answer{background:var(--green-bg);border:.5mm solid var(--green-m);border-radius:5mm;text-align:center;
+  font-family:var(--head);font-size:15.5pt;color:var(--green);line-height:1.7;padding:2mm 5mm}
+.answer .tick{font-size:15pt;margin-inline-end:2mm}
+.answer .f{color:inherit;font-family:var(--body);font-weight:700;font-size:13pt}
+
+/* ============ الغلاف ============ */
+.banner{display:flex;align-items:center;justify-content:space-between;gap:5mm;background:var(--cream);
+  border:.55mm solid var(--ink);border-radius:5mm;padding:2.2mm 6mm}
+.cap{width:5.2mm;height:5.2mm;vertical-align:-1.1mm}
+.brand{display:flex;align-items:center;gap:4mm}
+.brand-tx{text-align:center;line-height:1.3}
+.brand-name{font-family:Georgia,'Times New Roman',serif;font-style:italic;font-weight:600;font-size:16.5pt;color:var(--teal)}
+.brand-handle{font-family:var(--alex);font-weight:700;font-size:11pt;color:var(--burg)}
+.banner-tx{text-align:end;line-height:1.5}
+.banner-tx b{display:block;font-family:var(--alex);font-weight:800;font-size:15.5pt;color:var(--fnavy2)}
+.banner-tx span{font-weight:600;font-size:10.5pt;color:var(--teal)}
+.title-row{display:flex;align-items:center;justify-content:center;gap:4mm;margin-top:2mm}
+.wave{width:24mm;height:3.5mm;flex:none}
+.big-title{background:var(--yellow);border:.6mm solid var(--ink);border-radius:999px;box-shadow:0 1.3mm 0 var(--burg);
+  font-family:var(--head);font-size:23pt;color:var(--burg);line-height:1.5;padding:.4mm 11mm;white-space:nowrap}
+.sub-title{align-self:center;background:var(--teal);color:#fff;border-radius:999px;box-shadow:0 1mm 0 var(--burg);
+  font-weight:600;font-size:12.5pt;line-height:1.7;padding:1mm 8mm}
+.info-row{display:flex;align-items:center;gap:5mm}
+.info-pill{flex:1;background:var(--cream);border:.55mm solid var(--ink);border-radius:4mm;box-shadow:1mm 1mm 0 var(--burg);
+  text-align:center;font-family:var(--head);font-size:13pt;color:var(--burg);line-height:1.65;padding:1.6mm 4mm}
+.info-meta{font-size:9.5pt;font-weight:500;color:#7B8794;line-height:2;white-space:nowrap}
+.laws-h{position:relative;background:var(--yellow);border:.6mm solid var(--ink);border-radius:6mm;
+  text-align:center;font-family:var(--head);font-size:16pt;color:var(--ink);line-height:1.65;padding:2.4mm 14mm 1.8mm;margin-top:2.5mm}
+.star{position:absolute;top:-4mm;inset-inline-start:4mm;width:11.5mm;height:11.5mm;border-radius:50%;
+  background:var(--burg);color:#fff;border:.6mm solid var(--ink);display:flex;align-items:center;justify-content:center;font-size:15pt;line-height:1}
+.laws{display:grid;grid-template-columns:1fr 1fr;gap:4.2mm 5mm;margin-top:1mm}
+.law{position:relative;background:var(--paper);border:.45mm solid var(--gold-l);border-radius:5mm;padding:4.2mm 3.5mm 3mm}
+.law-num{position:absolute;top:-3.8mm;inset-inline-start:4mm;width:9.5mm;height:9.5mm;border-radius:50%;
+  background:var(--burg);color:#fff;display:flex;align-items:center;justify-content:center;
+  font-family:var(--head);font-size:13.5pt;line-height:1;padding-top:.8mm}
+.law p{text-align:center;font-weight:600;font-size:12pt;color:var(--navy);line-height:1.8;margin-bottom:1.8mm}
+.law .formula{display:block;text-align:center;font-size:12.5pt}
+.law-wide{grid-column:1/-1;width:84%;justify-self:start}
+.cover-note{background:var(--note);border-radius:4mm;padding:2.8mm 4.5mm;font-size:11pt;font-weight:500;
+  color:var(--brown);line-height:1.9}
+.cover-note .f{color:var(--fnavy)}
+
+/* ============ صفحة النصائح ============ */
+.tips-h{position:relative;background:var(--yellow);border:.6mm solid var(--ink);border-radius:999px;
+  text-align:center;font-family:var(--head);font-size:15.5pt;color:var(--ink);line-height:1.7;padding:1.8mm 14mm;margin-top:3mm}
+.tips-h .star{inset-inline-start:-1mm;top:50%;transform:translateY(-50%)}
+.tip{display:flex;gap:3.5mm;align-items:flex-start;background:var(--stepbg);border:.45mm solid var(--gold-l);
+  border-radius:4mm;padding:3.2mm 4.5mm}
+.tip-n{flex:none;width:9mm;height:9mm;border-radius:50%;background:var(--burg);color:#fff;margin-top:.6mm;
+  display:flex;align-items:center;justify-content:center;font-family:var(--head);font-size:13pt;line-height:1;padding-top:.7mm}
+.tip p{font-size:12pt;font-weight:500;color:var(--navy);line-height:2}
+.closing{justify-content:center;gap:8mm;padding:4mm 6mm}
+.closing .brand-tx{line-height:1.6}
+.wish{font-family:var(--head);font-size:14.5pt;color:var(--burg)}
+.wish .handle{font-size:11pt}
+
+/* ============ وضع الاختبار (شاشة فقط) ============ */
+.reveal{display:none;margin:0 auto;font-family:var(--body);font-weight:700;font-size:12pt;color:var(--teal);
+  background:#fff;border:.5mm dashed var(--teal);border-radius:999px;padding:1.6mm 9mm;cursor:pointer}
+body.quiz .page:not(.revealed) .opt.correct{background:#fff;border-color:#E7E3D6;color:var(--ink)}
+body.quiz .page:not(.revealed) .opt.correct .opt-k{background:var(--teal)}
+body.quiz .page:not(.revealed) .opt.correct .tick{display:none}
+body.quiz .page:not(.revealed) .steps,body.quiz .page:not(.revealed) .answer{display:none}
+body.quiz .page:not(.revealed) .reveal{display:block}
+body.quiz .opt{cursor:pointer}
+body.quiz .opt.pick-ok{background:var(--green-bg);border-color:#9CCBA9;color:var(--green)}
+body.quiz .opt.pick-bad{background:#FBE3E0;border-color:#B5483F;color:#8E2F28}
+
+/* ============ الطباعة: صفحة A4 كاملة لكل ورقة ============ */
+@media print{
+  @page{size:A4;margin:0}
+  body{background:#fff}
+  .toolbar,.reveal{display:none!important}
+  .scaler{width:auto!important;height:auto!important;margin:0!important;display:block}
+  .page{transform:none!important;box-shadow:none;margin:0;page-break-after:always;break-after:page}
+  .scaler:last-of-type .page{page-break-after:auto;break-after:auto}
+}
+</style>
+</head>
+<body>
+
+<!-- شريط أدوات للشاشة فقط -->
+<div class="toolbar">
+  <span class="tb-title">ملزمة الفيزياء <small>· المقذوف الأفقي</small></span>
+  <nav>
+    <a href="#page-1">الغلاف والقوانين</a>
+    <a href="#page-2">المجموعة (أ)</a>
+    <a href="#page-7">المجموعة (ب)</a>
+    <a href="#page-12">المجموعة (ج)</a>
+    <a href="#page-17">نصائح قبل الامتحان</a>
+    <button type="button" id="quizBtn" aria-pressed="false">وضع الاختبار: إخفاء الحلول</button>
+    <button type="button" class="tb-print" onclick="window.print()">طباعة / حفظ PDF</button>
+  </nav>
+</div>
+
+<!-- ================= الصفحة ١: الغلاف وقوانين الحل السريع ================= -->
+<div class="scaler"><section class="page" id="page-1">
+  <i class="corner c-tl"></i><i class="corner c-tr"></i><i class="corner c-br"></i>
+  <div class="sheet">
+    <header class="ph"><span class="ph-pill">حل التقييم الأسبوعي</span><span class="logo logo-s"></span><span class="handle" dir="ltr">@A7med19_7</span></header>
+    <main class="pc" style="gap:3.2mm;padding-top:3.5mm">
+      <div class="banner">
+        <div class="brand">
+          <span class="logo logo-m"></span>
+          <div class="brand-tx">
+            <div class="brand-name" dir="ltr">Baccalaureate <svg class="cap" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 L22 9 L12 14 L2 9 Z" fill="#2B2B3A"/><path d="M6 11.4 V16c0 1.6 2.7 3 6 3s6-1.4 6-3v-4.6l-6 3z" fill="#45455C"/><line x1="22" y1="9" x2="22" y2="14" stroke="#D9A441" stroke-width="1.5"/><circle cx="22" cy="15.3" r="1.25" fill="#D9A441"/></svg></div>
+            <div class="brand-handle" dir="ltr">@A7med19_7</div>
+          </div>
+        </div>
+        <div class="banner-tx"><b>ملزمة الفيزياء</b><span>حل التقييم الأسبوعي · تانية بكلوريا</span></div>
+      </div>
+
+      <div class="title-row">
+        <svg class="wave" viewBox="0 0 90 12" aria-hidden="true"><path d="M2 6 Q9 0 16 6 T30 6 T44 6 T58 6 T72 6 T86 6" fill="none" stroke="#D98C5F" stroke-width="2.6" stroke-linecap="round"/></svg>
+        <h1 class="big-title">حـل التقييـم الأسبوعـي</h1>
+        <svg class="wave" viewBox="0 0 90 12" aria-hidden="true"><path d="M2 6 Q9 0 16 6 T30 6 T44 6 T58 6 T72 6 T86 6" fill="none" stroke="#D98C5F" stroke-width="2.6" stroke-linecap="round"/></svg>
+      </div>
+      <p class="sub-title">الفيزياء · المقذوف الأفقي (الحركة في بُعدين)</p>
+
+      <div class="info-row">
+        <p class="info-pill">١٥ سؤالًا في ثلاث مجموعات (أ · ب · ج) — كل سؤال بشكله وحله بالخطوات</p>
+        <p class="info-meta">الأسبوع : ............<br>التاريخ : ....... / ....... / ............</p>
+      </div>
+
+      <div class="laws-h"><span class="star">★</span>قوانين الحل السريع — أربع علاقات تحل أسئلة<br>المقذوف الأفقي</div>
+
+      <div class="laws">
+        <div class="law"><span class="law-num">١</span><p>زمن الطيران (الحركة الرأسية سقوط حر):</p><span class="formula" dir="ltr">t = √(2h / g)</span></div>
+        <div class="law"><span class="law-num">٢</span><p>المدى الأفقي (سرعة أفقية ثابتة):</p><span class="formula" dir="ltr">x = v<sub>0</sub> · t</span></div>
+        <div class="law"><span class="law-num">٣</span><p>الارتفاع من زمن السقوط:</p><span class="formula" dir="ltr">h = ½ g t<sup>2</sup></span></div>
+        <div></div>
+        <div class="law law-wide"><span class="law-num">٤</span><p>المسافة المستقيمة بين نقطة القذف ونقطة الهبوط:</p><span class="formula" dir="ltr">d = √(x<sup>2</sup> + h<sup>2</sup>)</span></div>
+      </div>
+
+      <p class="cover-note">الحركتان الأفقية والرأسية مستقلتان، والزمن <span class="f" dir="ltr">t</span> هو الرابط بينهما.
+        <span class="f" dir="ltr">v<sub>0</sub></span> السرعة الأفقية الابتدائية، و<span class="f" dir="ltr">h</span> الارتفاع،
+        و<span class="f" dir="ltr">x</span> المدى الأفقي. وحيث لم تُذكر <span class="f" dir="ltr">g</span> نأخذها
+        <span class="f" dir="ltr">10 m/s<sup>2</sup></span>.</p>
+    </main>
+    <footer class="pf"><div class="pf-bar">الفيزياء · المقذوف الأفقي</div><div class="pf-num"><span class="pf-circle">١</span><span class="pf-grade">تانية<br>بكلوريا</span></div></footer>
+  </div>
+</section></div>
+
+<!-- ================= الصفحة ٢: المجموعة (أ) - ١ ================= -->
+<div class="scaler"><section class="page" id="page-2">
+  <i class="corner c-tl"></i><i class="corner c-tr"></i><i class="corner c-br"></i>
+  <div class="sheet">
+    <header class="ph"><span class="ph-pill">حل التقييم الأسبوعي</span><span class="logo logo-s"></span><span class="handle" dir="ltr">@A7med19_7</span></header>
+    <main class="pc">
+      <p class="group">المجموعة (أ)</p>
+      <div class="q"><span class="q-num">١</span><p>قُذف جسم أفقيًا من الدور الرابع لمبنى مكوّن من عشرة أدوار، مع إهمال مقاومة الهواء. إذا قُذف الجسم أفقيًا من الدور العاشر بنفس السرعة الأفقية الابتدائية، فإن زمن وصوله إلى الأرض ومداه الأفقي:</p></div>
+      <div class="mid">
+        <figure class="diagram">%%DIAGRAM:a1%%</figure>
+        <div class="opts">
+          <div class="opt"><span class="opt-k">أ</span><span class="opt-t">زمن الوصول يقل، والمدى يقل</span></div>
+          <div class="opt"><span class="opt-k">ب</span><span class="opt-t">زمن الوصول يقل، والمدى يزيد</span></div>
+          <div class="opt correct"><span class="opt-k">ج</span><span class="opt-t">زمن الوصول يزيد، والمدى يزيد</span><span class="tick">✓</span></div>
+          <div class="opt"><span class="opt-k">د</span><span class="opt-t">زمن الوصول يزيد، والمدى يقل</span></div>
+        </div>
+      </div>
+      <div class="steps"><h3 class="steps-h">خطوات الحل</h3>
+        <div class="step"><span class="step-n">١</span><div class="step-b"><p>الدور العاشر أعلى من الدور الرابع، إذن <mark>الارتفاع <span class="f" dir="ltr">h</span> يزيد</mark>.</p></div></div>
+        <div class="step"><span class="step-n">٢</span><div class="step-b"><p>زمن الطيران يعتمد على الارتفاع فقط:</p><p class="f-row"><span class="formula" dir="ltr">t = √(2h / g)</span></p><p>فإذا زاد <span class="f" dir="ltr">h</span> يزيد الزمن <span class="f" dir="ltr">t</span>.</p></div></div>
+        <div class="step"><span class="step-n">٣</span><div class="step-b"><p>المدى الأفقي:</p><p class="f-row"><span class="formula" dir="ltr">x = v<sub>0</sub> · t</span></p><p>السرعة <span class="f" dir="ltr">v<sub>0</sub></span> ثابتة والزمن زاد، إذن المدى يزيد.</p></div></div>
+      </div>
+      <p class="answer"><span class="tick">✓</span>الإجابة الصحيحة: (ج) — الزمن يزيد والمدى يزيد</p>
+      <button class="reveal" type="button">عرض الحل</button>
+    </main>
+    <footer class="pf"><div class="pf-bar">الفيزياء · المقذوف الأفقي</div><div class="pf-num"><span class="pf-circle">٢</span><span class="pf-grade">تانية<br>بكلوريا</span></div></footer>
+  </div>
+</section></div>
+
+<!-- ================= الصفحة ٣: المجموعة (أ) - ٢ ================= -->
+<div class="scaler"><section class="page" id="page-3">
+  <i class="corner c-tl"></i><i class="corner c-tr"></i><i class="corner c-br"></i>
+  <div class="sheet">
+    <header class="ph"><span class="ph-pill">حل التقييم الأسبوعي</span><span class="logo logo-s"></span><span class="handle" dir="ltr">@A7med19_7</span></header>
+    <main class="pc">
+      <div class="q"><span class="q-num">٢</span><p>تحلّق مروحية أفقيًا بسرعة <span class="f" dir="ltr">v</span> وعلى ارتفاع <span class="f" dir="ltr">y</span>، وعليها أن تُسقط حزمة طعام لرجل يقف على الأرض. ما المسافة التي تفصل المروحية عن الرجل عند إسقاط حزمة الطعام؟</p></div>
+      <div class="mid">
+        <figure class="diagram">%%DIAGRAM:a2%%</figure>
+        <div class="opts">
+          <div class="opt"><span class="opt-k">أ</span><span class="formula" dir="ltr" style="border:none;padding:0">√(2gy / v<sup>2</sup>) + y<sup>2</sup></span></div>
+          <div class="opt correct"><span class="opt-k">ب</span><span class="formula" dir="ltr" style="border:none;padding:0">√(2v<sup>2</sup>y / g + y<sup>2</sup>)</span><span class="tick">✓</span></div>
+          <div class="opt"><span class="opt-k">ج</span><span class="formula" dir="ltr" style="border:none;padding:0">√(2gv<sup>2</sup>y + y<sup>2</sup>)</span></div>
+          <div class="opt"><span class="opt-k">د</span><span class="formula" dir="ltr" style="border:none;padding:0">√((2gv<sup>2</sup>y + 1) / y<sup>2</sup>)</span></div>
+        </div>
+      </div>
+      <div class="steps"><h3 class="steps-h">خطوات الحل</h3>
+        <div class="step"><span class="step-n">١</span><div class="step-b"><p>الحزمة تحمل سرعة المروحية الأفقية <span class="f" dir="ltr">v</span> وتسقط سقوطًا حرًا من الارتفاع <span class="f" dir="ltr">y</span>:</p><p class="f-row"><span class="formula" dir="ltr">t = √(2y / g)</span></p></div></div>
+        <div class="step"><span class="step-n">٢</span><div class="step-b"><p>المسافة الأفقية بين المروحية والرجل لحظة الإسقاط:</p><p class="f-row"><span class="formula" dir="ltr">x = v · t = v√(2y / g) &nbsp;⇒&nbsp; x<sup>2</sup> = 2v<sup>2</sup>y / g</span></p></div></div>
+        <div class="step"><span class="step-n">٣</span><div class="step-b"><p>المسافة المستقيمة <span class="f" dir="ltr">d</span> هي وتر المثلث القائم (ضلعاه <span class="f" dir="ltr">x</span> و <span class="f" dir="ltr">y</span>):</p><p class="f-row"><span class="formula" dir="ltr">d = √(x<sup>2</sup> + y<sup>2</sup>) = √(2v<sup>2</sup>y / g + y<sup>2</sup>)</span></p></div></div>
+      </div>
+      <p class="answer"><span class="tick">✓</span>الإجابة الصحيحة: (ب)</p>
+      <button class="reveal" type="button">عرض الحل</button>
+    </main>
+    <footer class="pf"><div class="pf-bar">الفيزياء · المقذوف الأفقي</div><div class="pf-num"><span class="pf-circle">٣</span><span class="pf-grade">تانية<br>بكلوريا</span></div></footer>
+  </div>
+</section></div>
+
+<!-- ================= الصفحة ٤: المجموعة (أ) - ٣ ================= -->
+<div class="scaler"><section class="page" id="page-4">
+  <i class="corner c-tl"></i><i class="corner c-tr"></i><i class="corner c-br"></i>
+  <div class="sheet">
+    <header class="ph"><span class="ph-pill">حل التقييم الأسبوعي</span><span class="logo logo-s"></span><span class="handle" dir="ltr">@A7med19_7</span></header>
+    <main class="pc">
+      <div class="q"><span class="q-num">٣</span><p>يُطلق جسم أفقيًا بسرعة <span class="f" dir="ltr">6.0 m/s</span> من ارتفاع معين، ويصل إلى سطح الأرض في خلال <span class="f" dir="ltr">3.0 s</span>. احسب الارتفاع الذي قُذف منه الجسم، والمدى الأفقي له.</p></div>
+      <div class="mid">
+        <figure class="diagram">%%DIAGRAM:a3%%</figure>
+        <div class="side">
+          <div class="givens">
+            <h4>المعطيات</h4>
+            <div class="g-row"><span>السرعة الأفقية</span><b class="gv" dir="ltr">v<sub>0</sub> = 6.0 m/s</b></div>
+            <div class="g-row"><span>زمن الطيران</span><b class="gv" dir="ltr">t = 3.0 s</b></div>
+            <hr class="g-sep">
+            <h4>المطلوب</h4>
+            <p class="wanted">الارتفاع <span class="f" dir="ltr">h</span> والمدى <span class="f" dir="ltr">x</span></p>
+          </div>
+          <p class="note">لم تُذكر <span class="f" dir="ltr">g</span> في نص السؤال، فاعتمدنا <span class="f" dir="ltr">g = 10 m/s<sup>2</sup></span> (ولو <span class="f" dir="ltr">g = 9.8</span> يكون <span class="f" dir="ltr">h ≈ 44.1 m</span>).</p>
+        </div>
+      </div>
+      <div class="steps"><h3 class="steps-h">خطوات الحل</h3>
+        <div class="step"><span class="step-n">١</span><div class="step-b"><p>السرعة الرأسية الابتدائية = صفر، فالارتفاع من السقوط الحر:</p><p class="f-row"><span class="formula" dir="ltr">h = ½ g t<sup>2</sup> = ½ × 10 × (3.0)<sup>2</sup></span></p><p class="f-row"><span class="formula" dir="ltr">h = 45 m</span></p></div></div>
+        <div class="step"><span class="step-n">٢</span><div class="step-b"><p>السرعة الأفقية ثابتة، فالمدى الأفقي:</p><p class="f-row"><span class="formula" dir="ltr">x = v<sub>0</sub> · t = 6.0 × 3.0 = 18 m</span></p></div></div>
+      </div>
+      <p class="answer"><span class="tick">✓</span>الارتفاع <span class="f" dir="ltr">45 m</span> | المدى الأفقي <span class="f" dir="ltr">18 m</span></p>
+      <button class="reveal" type="button">عرض الحل</button>
+    </main>
+    <footer class="pf"><div class="pf-bar">الفيزياء · المقذوف الأفقي</div><div class="pf-num"><span class="pf-circle">٤</span><span class="pf-grade">تانية<br>بكلوريا</span></div></footer>
+  </div>
+</section></div>
+
+<!-- ================= الصفحة ٥: المجموعة (أ) - ٤ ================= -->
+<div class="scaler"><section class="page" id="page-5">
+  <i class="corner c-tl"></i><i class="corner c-tr"></i><i class="corner c-br"></i>
+  <div class="sheet">
+    <header class="ph"><span class="ph-pill">حل التقييم الأسبوعي</span><span class="logo logo-s"></span><span class="handle" dir="ltr">@A7med19_7</span></header>
+    <main class="pc">
+      <div class="q"><span class="q-num">٤</span><p>ماذا يحدث لزمن وصول الجسم إلى الأرض ومداه الأفقي إذا تم قذف الجسم أفقيًا من نفس الارتفاع ولكن بسرعة أفقية أقل؟</p></div>
+      <div class="mid">
+        <figure class="diagram">%%DIAGRAM:a4%%</figure>
+        <div class="side">
+          <div class="givens">
+            <h4>المعطيات</h4>
+            <div class="g-row"><span>الارتفاع</span><b class="gv"><span dir="ltr">h</span> ثابت</b></div>
+            <div class="g-row"><span>السرعة الأفقية</span><b class="gv"><span dir="ltr">v<sub>0</sub></span> تقل</b></div>
+            <hr class="g-sep">
+            <h4>المطلوب</h4>
+            <p class="wanted">تغيّر الزمن <span class="f" dir="ltr">t</span> والمدى <span class="f" dir="ltr">x</span></p>
+          </div>
+        </div>
+      </div>
+      <div class="steps"><h3 class="steps-h">خطوات الحل</h3>
+        <div class="step"><span class="step-n">١</span><div class="step-b"><p>زمن الطيران يعتمد على الارتفاع فقط:</p><p class="f-row"><span class="formula" dir="ltr">t = √(2h / g)</span></p><p>والارتفاع <span class="f" dir="ltr">h</span> ثابت، إذن <mark>الزمن لا يتغير</mark>.</p></div></div>
+        <div class="step"><span class="step-n">٢</span><div class="step-b"><p>المدى الأفقي:</p><p class="f-row"><span class="formula" dir="ltr">x = v<sub>0</sub> · t</span></p><p>الزمن ثابت والسرعة الأفقية أقل، إذن المدى يقل.</p></div></div>
+      </div>
+      <p class="answer"><span class="tick">✓</span>الزمن لا يتغير، والمدى الأفقي يقل</p>
+      <button class="reveal" type="button">عرض الحل</button>
+    </main>
+    <footer class="pf"><div class="pf-bar">الفيزياء · المقذوف الأفقي</div><div class="pf-num"><span class="pf-circle">٥</span><span class="pf-grade">تانية<br>بكلوريا</span></div></footer>
+  </div>
+</section></div>
+
+<!-- ================= الصفحة ٦: المجموعة (أ) - ٥ ================= -->
+<div class="scaler"><section class="page" id="page-6">
+  <i class="corner c-tl"></i><i class="corner c-tr"></i><i class="corner c-br"></i>
+  <div class="sheet">
+    <header class="ph"><span class="ph-pill">حل التقييم الأسبوعي</span><span class="logo logo-s"></span><span class="handle" dir="ltr">@A7med19_7</span></header>
+    <main class="pc">
+      <div class="q"><span class="q-num">٥</span><p>تنطلق كرة بلياردو من طاولة ارتفاعها <span class="f" dir="ltr">0.75 m</span> بسرعة أفقية ابتدائية تبلغ <span class="f" dir="ltr">1.5 m/s</span>. ما المسافة الأفقية بين حافة الطاولة ومكان هبوط الكرة؟</p></div>
+      <div class="mid">
+        <figure class="diagram">%%DIAGRAM:a5%%</figure>
+        <div class="side">
+          <div class="givens">
+            <h4>المعطيات</h4>
+            <div class="g-row"><span>ارتفاع الطاولة</span><b class="gv" dir="ltr">h = 0.75 m</b></div>
+            <div class="g-row"><span>السرعة الأفقية</span><b class="gv" dir="ltr">v<sub>0</sub> = 1.5 m/s</b></div>
+            <hr class="g-sep">
+            <h4>المطلوب</h4>
+            <p class="wanted">المسافة الأفقية <span class="f" dir="ltr">x</span></p>
+          </div>
+          <p class="note">لم تُذكر <span class="f" dir="ltr">g</span> في نص السؤال، فاعتمدنا <span class="f" dir="ltr">g = 10 m/s<sup>2</sup></span> (ولو <span class="f" dir="ltr">g = 9.8</span> يكون <span class="f" dir="ltr">x ≈ 0.59 m</span>).</p>
+        </div>
+      </div>
+      <div class="steps"><h3 class="steps-h">خطوات الحل</h3>
+        <div class="step"><span class="step-n">١</span><div class="step-b"><p>زمن سقوط الكرة:</p><p class="f-row"><span class="formula" dir="ltr">t = √(2h / g) = √(2 × 0.75 / 10) = √0.15 ≈ 0.39 s</span></p></div></div>
+        <div class="step"><span class="step-n">٢</span><div class="step-b"><p>المسافة الأفقية:</p><p class="f-row"><span class="formula" dir="ltr">x = v<sub>0</sub> · t = 1.5 × 0.387 ≈ 0.58 m</span></p></div></div>
+      </div>
+      <p class="answer"><span class="tick">✓</span>المسافة الأفقية <span class="f" dir="ltr">≈ 0.58 m</span></p>
+      <button class="reveal" type="button">عرض الحل</button>
+    </main>
+    <footer class="pf"><div class="pf-bar">الفيزياء · المقذوف الأفقي</div><div class="pf-num"><span class="pf-circle">٦</span><span class="pf-grade">تانية<br>بكلوريا</span></div></footer>
+  </div>
+</section></div>
+
+<!-- ================= الصفحة ٧: المجموعة (ب) - ١ ================= -->
+<div class="scaler"><section class="page" id="page-7">
+  <i class="corner c-tl"></i><i class="corner c-tr"></i><i class="corner c-br"></i>
+  <div class="sheet">
+    <header class="ph"><span class="ph-pill">حل التقييم الأسبوعي</span><span class="logo logo-s"></span><span class="handle" dir="ltr">@A7med19_7</span></header>
+    <main class="pc">
+      <p class="group">المجموعة (ب)</p>
+      <div class="q"><span class="q-num">١</span><p>قُذف جسم أفقيًا من ارتفاع معين بسرعة ابتدائية <span class="f" dir="ltr">v</span>. إذا تمت مضاعفة السرعة الأفقية مع بقاء الارتفاع ثابتًا، فإن زمن وصول الجسم إلى الأرض:</p></div>
+      <div class="mid">
+        <figure class="diagram">%%DIAGRAM:b1%%</figure>
+        <div class="opts">
+          <div class="opt"><span class="opt-k">أ</span><span class="opt-t">يتضاعف</span></div>
+          <div class="opt"><span class="opt-k">ب</span><span class="opt-t">ينخفض إلى النصف</span></div>
+          <div class="opt correct"><span class="opt-k">ج</span><span class="opt-t">لا يتغير</span><span class="tick">✓</span></div>
+          <div class="opt"><span class="opt-k">د</span><span class="opt-t">يصبح أربعة أضعاف</span></div>
+        </div>
+      </div>
+      <div class="steps"><h3 class="steps-h">خطوات الحل</h3>
+        <div class="step"><span class="step-n">١</span><div class="step-b"><p>زمن الطيران يعتمد على الارتفاع وتسارع الجاذبية فقط:</p><p class="f-row"><span class="formula" dir="ltr">t = √(2h / g)</span></p></div></div>
+        <div class="step"><span class="step-n">٢</span><div class="step-b"><p>السرعة الأفقية غير موجودة في العلاقة، فمضاعفتها <mark>لا تغيّر الزمن</mark> (تُضاعف المدى فقط).</p></div></div>
+      </div>
+      <p class="answer"><span class="tick">✓</span>الإجابة الصحيحة: (ج) — لا يتغير</p>
+      <button class="reveal" type="button">عرض الحل</button>
+    </main>
+    <footer class="pf"><div class="pf-bar">الفيزياء · المقذوف الأفقي</div><div class="pf-num"><span class="pf-circle">٧</span><span class="pf-grade">تانية<br>بكلوريا</span></div></footer>
+  </div>
+</section></div>
+
+<!-- ================= الصفحة ٨: المجموعة (ب) - ٢ ================= -->
+<div class="scaler"><section class="page" id="page-8">
+  <i class="corner c-tl"></i><i class="corner c-tr"></i><i class="corner c-br"></i>
+  <div class="sheet">
+    <header class="ph"><span class="ph-pill">حل التقييم الأسبوعي</span><span class="logo logo-s"></span><span class="handle" dir="ltr">@A7med19_7</span></header>
+    <main class="pc">
+      <div class="q"><span class="q-num">٢</span><p>تتميّز حركة المقذوف الأفقي من ارتفاع معين بـ:</p></div>
+      <div class="mid">
+        <figure class="diagram">%%DIAGRAM:b2%%</figure>
+        <div class="opts">
+          <div class="opt"><span class="opt-k">أ</span><span class="opt-t">تسارع موجب خلال الحركة الأفقية للمقذوف</span></div>
+          <div class="opt"><span class="opt-k">ب</span><span class="opt-t">تسارع سالب خلال الحركة الأفقية للمقذوف</span></div>
+          <div class="opt correct"><span class="opt-k">ج</span><span class="opt-t">تسارع مساوٍ لتسارع الجاذبية الأرضية خلال الحركة الرأسية للمقذوف</span><span class="tick">✓</span></div>
+          <div class="opt"><span class="opt-k">د</span><span class="opt-t">تسارع مساوٍ لربع قيمة تسارع الجاذبية الأرضية خلال الحركة الرأسية للمقذوف</span></div>
+        </div>
+      </div>
+      <div class="steps"><h3 class="steps-h">خطوات الحل</h3>
+        <div class="step"><span class="step-n">١</span><div class="step-b"><p><b>أفقيًا:</b> لا توجد قوة أفقية (بإهمال الهواء)، فالتسارع الأفقي صفر والسرعة الأفقية ثابتة، إذن (أ) و(ب) خطأ.</p></div></div>
+        <div class="step"><span class="step-n">٢</span><div class="step-b"><p><b>رأسيًا:</b> يسقط الجسم سقوطًا حرًا تحت تأثير الجاذبية فقط:</p><p class="f-row"><span class="formula" dir="ltr">a<sub>y</sub> = g ≈ 10 m/s<sup>2</sup></span></p><p>إذن (ج) صحيحة و(د) خطأ.</p></div></div>
+      </div>
+      <p class="answer"><span class="tick">✓</span>الإجابة الصحيحة: (ج)</p>
+      <button class="reveal" type="button">عرض الحل</button>
+    </main>
+    <footer class="pf"><div class="pf-bar">الفيزياء · المقذوف الأفقي</div><div class="pf-num"><span class="pf-circle">٨</span><span class="pf-grade">تانية<br>بكلوريا</span></div></footer>
+  </div>
+</section></div>
+
+<!-- ================= الصفحة ٩: المجموعة (ب) - ٣ ================= -->
+<div class="scaler"><section class="page" id="page-9">
+  <i class="corner c-tl"></i><i class="corner c-tr"></i><i class="corner c-br"></i>
+  <div class="sheet">
+    <header class="ph"><span class="ph-pill">حل التقييم الأسبوعي</span><span class="logo logo-s"></span><span class="handle" dir="ltr">@A7med19_7</span></header>
+    <main class="pc">
+      <div class="q"><span class="q-num">٣</span><p>قُذف جسم أفقيًا من ارتفاع <span class="f" dir="ltr">h</span> بسرعة أفقية ابتدائية <span class="f" dir="ltr">v</span>، مع إهمال مقاومة الهواء. ماذا يحدث لكل من زمن وصول الجسم إلى الأرض والمدى الأفقي إذا زاد الارتفاع إلى <span class="f" dir="ltr">4h</span> مع بقاء السرعة الأفقية الابتدائية ثابتة؟ وضّح السبب.</p></div>
+      <div class="mid">
+        <figure class="diagram">%%DIAGRAM:b3%%</figure>
+        <div class="side">
+          <div class="givens">
+            <h4>المعطيات</h4>
+            <div class="g-row"><span>الارتفاع</span><b class="gv" dir="ltr">h ← 4h</b></div>
+            <div class="g-row"><span>السرعة الأفقية</span><b class="gv"><span dir="ltr">v</span> ثابتة</b></div>
+            <hr class="g-sep">
+            <h4>المطلوب</h4>
+            <p class="wanted">تغيّر الزمن <span class="f" dir="ltr">t</span> والمدى <span class="f" dir="ltr">x</span></p>
+          </div>
+        </div>
+      </div>
+      <div class="steps"><h3 class="steps-h">خطوات الحل</h3>
+        <div class="step"><span class="step-n">١</span><div class="step-b"><p>الزمن يتناسب مع جذر الارتفاع:</p><p class="f-row"><span class="formula" dir="ltr">t = √(2h / g)</span></p></div></div>
+        <div class="step"><span class="step-n">٢</span><div class="step-b"><p>عند الارتفاع <span class="f" dir="ltr">4h</span>:</p><p class="f-row"><span class="formula" dir="ltr">t′ = √(2 · 4h / g) = 2√(2h / g) = 2t</span></p></div></div>
+        <div class="step"><span class="step-n">٣</span><div class="step-b"><p>المدى الأفقي:</p><p class="f-row"><span class="formula" dir="ltr">x′ = v · t′ = v · 2t = 2x</span></p></div></div>
+      </div>
+      <p class="answer"><span class="tick">✓</span>الزمن يتضاعف والمدى الأفقي يتضاعف أيضًا (كلاهما <span class="f" dir="ltr">×2</span>)</p>
+      <button class="reveal" type="button">عرض الحل</button>
+    </main>
+    <footer class="pf"><div class="pf-bar">الفيزياء · المقذوف الأفقي</div><div class="pf-num"><span class="pf-circle">٩</span><span class="pf-grade">تانية<br>بكلوريا</span></div></footer>
+  </div>
+</section></div>
+
+<!-- ================= الصفحة ١٠: المجموعة (ب) - ٤ ================= -->
+<div class="scaler"><section class="page" id="page-10">
+  <i class="corner c-tl"></i><i class="corner c-tr"></i><i class="corner c-br"></i>
+  <div class="sheet">
+    <header class="ph"><span class="ph-pill">حل التقييم الأسبوعي</span><span class="logo logo-s"></span><span class="handle" dir="ltr">@A7med19_7</span></header>
+    <main class="pc">
+      <div class="q"><span class="q-num">٤</span><p>يوضح الشكل عملتين <span class="f" dir="ltr">A</span> و <span class="f" dir="ltr">B</span>. قُذفت العملة <span class="f" dir="ltr">A</span> أفقيًا بسرعة ابتدائية <span class="f" dir="ltr">(v<sub>0</sub>)</span>، بينما تُركت العملة <span class="f" dir="ltr">B</span> لتسقط سقوطًا حرًا من نفس الارتفاع. أي العملتين تصل سطح الأرض أولًا؟ مع التفسير.</p></div>
+      <div class="mid">
+        <figure class="diagram">%%DIAGRAM:b4%%</figure>
+        <div class="side">
+          <div class="givens">
+            <h4>المعطيات</h4>
+            <div class="g-row"><span>العملة <span class="f" dir="ltr">A</span></span><span>قُذفت أفقيًا</span></div>
+            <div class="g-row"><span>العملة <span class="f" dir="ltr">B</span></span><span>سقوط حر</span></div>
+            <hr class="g-sep">
+            <h4>المطلوب</h4>
+            <p class="wanted">أيهما تصل أولًا؟</p>
+          </div>
+        </div>
+      </div>
+      <div class="steps"><h3 class="steps-h">خطوات الحل</h3>
+        <div class="step"><span class="step-n">١</span><div class="step-b"><p>الحركة الرأسية مستقلة عن الأفقية: السرعة الرأسية الابتدائية للعملتين = صفر والارتفاع واحد.</p></div></div>
+        <div class="step"><span class="step-n">٢</span><div class="step-b"><p>لكل منهما:</p><p class="f-row"><span class="formula" dir="ltr">h = ½ g t<sup>2</sup> &nbsp;⇒&nbsp; t = √(2h / g)</span></p><p>وهي قيمة واحدة للعملتين.</p></div></div>
+        <div class="step"><span class="step-n">٣</span><div class="step-b"><p>السرعة الأفقية تجعل <span class="f" dir="ltr">A</span> تقطع مسافة أفقية <mark>دون أن تغيّر زمن سقوطها</mark>.</p></div></div>
+      </div>
+      <p class="answer"><span class="tick">✓</span>تصل العملتان <span class="f" dir="ltr">A</span> و <span class="f" dir="ltr">B</span> معًا في اللحظة نفسها</p>
+      <button class="reveal" type="button">عرض الحل</button>
+    </main>
+    <footer class="pf"><div class="pf-bar">الفيزياء · المقذوف الأفقي</div><div class="pf-num"><span class="pf-circle">١٠</span><span class="pf-grade">تانية<br>بكلوريا</span></div></footer>
+  </div>
+</section></div>
+
+<!-- ================= الصفحة ١١: المجموعة (ب) - ٥ ================= -->
+<div class="scaler"><section class="page" id="page-11">
+  <i class="corner c-tl"></i><i class="corner c-tr"></i><i class="corner c-br"></i>
+  <div class="sheet">
+    <header class="ph"><span class="ph-pill">حل التقييم الأسبوعي</span><span class="logo logo-s"></span><span class="handle" dir="ltr">@A7med19_7</span></header>
+    <main class="pc">
+      <div class="q"><span class="q-num">٥</span><p>قُذف جسم أفقيًا بسرعة <span class="f" dir="ltr">8 m/s</span> من ارتفاع <span class="f" dir="ltr">30 m</span> فوق سطح الأرض. بافتراض أن تسارع الجاذبية <span class="f" dir="ltr">10 m/s<sup>2</sup></span>، أوجد: (أ) الزمن الذي يستغرقه الجسم للوصول إلى سطح الأرض بالثواني. (ب) المدى الأفقي للجسم بالمتر.</p></div>
+      <div class="mid">
+        <figure class="diagram">%%DIAGRAM:b5%%</figure>
+        <div class="side">
+          <div class="givens">
+            <h4>المعطيات</h4>
+            <div class="g-row"><span>السرعة الأفقية</span><b class="gv" dir="ltr">v<sub>0</sub> = 8 m/s</b></div>
+            <div class="g-row"><span>الارتفاع</span><b class="gv" dir="ltr">h = 30 m</b></div>
+            <div class="g-row"><span>الجاذبية</span><b class="gv" dir="ltr">g = 10 m/s<sup>2</sup></b></div>
+            <hr class="g-sep">
+            <h4>المطلوب</h4>
+            <p class="wanted">الزمن <span class="f" dir="ltr">t</span> والمدى <span class="f" dir="ltr">x</span></p>
+          </div>
+        </div>
+      </div>
+      <div class="steps"><h3 class="steps-h">خطوات الحل</h3>
+        <div class="step"><span class="step-n">١</span><div class="step-b"><p>(أ) زمن الوصول للأرض:</p><p class="f-row"><span class="formula" dir="ltr">t = √(2h / g) = √(2 × 30 / 10) = √6 ≈ 2.45 s</span></p></div></div>
+        <div class="step"><span class="step-n">٢</span><div class="step-b"><p>(ب) المدى الأفقي:</p><p class="f-row"><span class="formula" dir="ltr">x = v<sub>0</sub> · t = 8 × 2.45 ≈ 19.6 m</span></p></div></div>
+      </div>
+      <p class="answer"><span class="tick">✓</span>(أ) <span class="f" dir="ltr">2.45 s</span> | (ب) <span class="f" dir="ltr">19.6 m</span></p>
+      <button class="reveal" type="button">عرض الحل</button>
+    </main>
+    <footer class="pf"><div class="pf-bar">الفيزياء · المقذوف الأفقي</div><div class="pf-num"><span class="pf-circle">١١</span><span class="pf-grade">تانية<br>بكلوريا</span></div></footer>
+  </div>
+</section></div>
+
+<!-- ================= الصفحة ١٢: المجموعة (ج) - ١ ================= -->
+<div class="scaler"><section class="page" id="page-12">
+  <i class="corner c-tl"></i><i class="corner c-tr"></i><i class="corner c-br"></i>
+  <div class="sheet">
+    <header class="ph"><span class="ph-pill">حل التقييم الأسبوعي</span><span class="logo logo-s"></span><span class="handle" dir="ltr">@A7med19_7</span></header>
+    <main class="pc">
+      <p class="group">المجموعة (ج)</p>
+      <div class="q"><span class="q-num">١</span><p>نقصان السرعة الأفقية الابتدائية لمقذوف أفقي إلى النصف مع الحفاظ على الارتفاع ثابتًا سيؤدي إلى:</p></div>
+      <div class="mid">
+        <figure class="diagram">%%DIAGRAM:c1%%</figure>
+        <div class="opts">
+          <div class="opt"><span class="opt-k">أ</span><span class="opt-t">نقصان زمن الطيران إلى النصف</span></div>
+          <div class="opt"><span class="opt-k">ب</span><span class="opt-t">زيادة زمن الطيران إلى الضعف</span></div>
+          <div class="opt correct"><span class="opt-k">ج</span><span class="opt-t">نقصان المدى الأفقي إلى النصف</span><span class="tick">✓</span></div>
+          <div class="opt"><span class="opt-k">د</span><span class="opt-t">زيادة المدى الأفقي إلى الضعف</span></div>
+        </div>
+      </div>
+      <div class="steps"><h3 class="steps-h">خطوات الحل</h3>
+        <div class="step"><span class="step-n">١</span><div class="step-b"><p>الارتفاع ثابت، فزمن الطيران ثابت:</p><p class="f-row"><span class="formula" dir="ltr">t = √(2h / g)</span></p><p>إذن (أ) و(ب) خطأ.</p></div></div>
+        <div class="step"><span class="step-n">٢</span><div class="step-b"><p>المدى الأفقي:</p><p class="f-row"><span class="formula" dir="ltr">x = v<sub>0</sub> · t</span></p><p>الزمن ثابت، فإذا صارت السرعة النصف <mark>صار المدى النصف</mark>.</p></div></div>
+      </div>
+      <p class="answer"><span class="tick">✓</span>الإجابة الصحيحة: (ج) — نقصان المدى الأفقي إلى النصف</p>
+      <button class="reveal" type="button">عرض الحل</button>
+    </main>
+    <footer class="pf"><div class="pf-bar">الفيزياء · المقذوف الأفقي</div><div class="pf-num"><span class="pf-circle">١٢</span><span class="pf-grade">تانية<br>بكلوريا</span></div></footer>
+  </div>
+</section></div>
+
+<!-- ================= الصفحة ١٣: المجموعة (ج) - ٢ ================= -->
+<div class="scaler"><section class="page" id="page-13">
+  <i class="corner c-tl"></i><i class="corner c-tr"></i><i class="corner c-br"></i>
+  <div class="sheet">
+    <header class="ph"><span class="ph-pill">حل التقييم الأسبوعي</span><span class="logo logo-s"></span><span class="handle" dir="ltr">@A7med19_7</span></header>
+    <main class="pc">
+      <div class="q"><span class="q-num">٢</span><p>تتميّز حركة المقذوف الأفقي من ارتفاع معين أثناء سقوطه نحو سطح الأرض بـ:</p></div>
+      <div class="mid">
+        <figure class="diagram">%%DIAGRAM:c2%%</figure>
+        <div class="opts">
+          <div class="opt"><span class="opt-k">أ</span><span class="opt-t">زيادة سرعته الأفقية مع مرور الوقت</span></div>
+          <div class="opt"><span class="opt-k">ب</span><span class="opt-t">نقصان سرعته الأفقية مع مرور الوقت</span></div>
+          <div class="opt"><span class="opt-k">ج</span><span class="opt-t">نقصان سرعته الرأسية مع مرور الوقت</span></div>
+          <div class="opt correct"><span class="opt-k">د</span><span class="opt-t">زيادة سرعته الرأسية مع مرور الوقت</span><span class="tick">✓</span></div>
+        </div>
+      </div>
+      <div class="steps"><h3 class="steps-h">خطوات الحل</h3>
+        <div class="step"><span class="step-n">١</span><div class="step-b"><p><b>أفقيًا:</b> التسارع صفر، فالسرعة الأفقية ثابتة لا تزيد ولا تنقص، إذن (أ) و(ب) خطأ.</p></div></div>
+        <div class="step"><span class="step-n">٢</span><div class="step-b"><p><b>رأسيًا:</b> سقوط حر من السكون:</p><p class="f-row"><span class="formula" dir="ltr">v<sub>y</sub> = g · t</span></p><p>فالسرعة الرأسية تزيد مع الزمن، إذن (د) صحيحة و(ج) خطأ.</p></div></div>
+      </div>
+      <p class="answer"><span class="tick">✓</span>الإجابة الصحيحة: (د) — زيادة سرعته الرأسية مع مرور الوقت</p>
+      <button class="reveal" type="button">عرض الحل</button>
+    </main>
+    <footer class="pf"><div class="pf-bar">الفيزياء · المقذوف الأفقي</div><div class="pf-num"><span class="pf-circle">١٣</span><span class="pf-grade">تانية<br>بكلوريا</span></div></footer>
+  </div>
+</section></div>
+
+<!-- ================= الصفحة ١٤: المجموعة (ج) - ٣ ================= -->
+<div class="scaler"><section class="page" id="page-14">
+  <i class="corner c-tl"></i><i class="corner c-tr"></i><i class="corner c-br"></i>
+  <div class="sheet">
+    <header class="ph"><span class="ph-pill">حل التقييم الأسبوعي</span><span class="logo logo-s"></span><span class="handle" dir="ltr">@A7med19_7</span></header>
+    <main class="pc">
+      <div class="q"><span class="q-num">٣</span><p>تم ركل كرة أفقيًا من تلة يبلغ ارتفاعها <span class="f" dir="ltr">22.0 m</span>، وسقطت على مسافة <span class="f" dir="ltr">35.0 m</span> من حافة التلة. ما مقدار السرعة الأفقية الابتدائية للكرة؟</p></div>
+      <div class="mid">
+        <figure class="diagram">%%DIAGRAM:c3%%</figure>
+        <div class="side">
+          <div class="givens">
+            <h4>المعطيات</h4>
+            <div class="g-row"><span>ارتفاع التلة</span><b class="gv" dir="ltr">h = 22.0 m</b></div>
+            <div class="g-row"><span>المسافة الأفقية</span><b class="gv" dir="ltr">x = 35.0 m</b></div>
+            <hr class="g-sep">
+            <h4>المطلوب</h4>
+            <p class="wanted">السرعة الأفقية <span class="f" dir="ltr">v<sub>0</sub></span></p>
+          </div>
+          <p class="note">لم تُذكر <span class="f" dir="ltr">g</span> في نص السؤال، فاعتمدنا <span class="f" dir="ltr">g = 10 m/s<sup>2</sup></span> (ولو <span class="f" dir="ltr">g = 9.8</span> يكون <span class="f" dir="ltr">v<sub>0</sub> ≈ 16.5 m/s</span>).</p>
+        </div>
+      </div>
+      <div class="steps"><h3 class="steps-h">خطوات الحل</h3>
+        <div class="step"><span class="step-n">١</span><div class="step-b"><p>زمن سقوط الكرة:</p><p class="f-row"><span class="formula" dir="ltr">t = √(2h / g) = √(2 × 22.0 / 10) = √4.4 ≈ 2.10 s</span></p></div></div>
+        <div class="step"><span class="step-n">٢</span><div class="step-b"><p>من المدى الأفقي:</p><p class="f-row"><span class="formula" dir="ltr">x = v<sub>0</sub> · t &nbsp;⇒&nbsp; v<sub>0</sub> = x / t = 35.0 / 2.10 ≈ 16.7 m/s</span></p></div></div>
+      </div>
+      <p class="answer"><span class="tick">✓</span>السرعة الأفقية الابتدائية <span class="f" dir="ltr">≈ 16.7 m/s</span></p>
+      <button class="reveal" type="button">عرض الحل</button>
+    </main>
+    <footer class="pf"><div class="pf-bar">الفيزياء · المقذوف الأفقي</div><div class="pf-num"><span class="pf-circle">١٤</span><span class="pf-grade">تانية<br>بكلوريا</span></div></footer>
+  </div>
+</section></div>
+
+<!-- ================= الصفحة ١٥: المجموعة (ج) - ٤ ================= -->
+<div class="scaler"><section class="page" id="page-15">
+  <i class="corner c-tl"></i><i class="corner c-tr"></i><i class="corner c-br"></i>
+  <div class="sheet">
+    <header class="ph"><span class="ph-pill">حل التقييم الأسبوعي</span><span class="logo logo-s"></span><span class="handle" dir="ltr">@A7med19_7</span></header>
+    <main class="pc">
+      <div class="q"><span class="q-num">٤</span><p>ماذا يحدث لزمن وصول الجسم إلى الأرض ومداه الأفقي إذا تم قذف الجسم أفقيًا من ارتفاع أكبر مع ثبات السرعة الأفقية الابتدائية للقذف؟</p></div>
+      <div class="mid">
+        <figure class="diagram">%%DIAGRAM:c4%%</figure>
+        <div class="side">
+          <div class="givens">
+            <h4>المعطيات</h4>
+            <div class="g-row"><span>الارتفاع</span><b class="gv"><span dir="ltr">h</span> يزيد</b></div>
+            <div class="g-row"><span>السرعة الأفقية</span><b class="gv"><span dir="ltr">v<sub>0</sub></span> ثابتة</b></div>
+            <hr class="g-sep">
+            <h4>المطلوب</h4>
+            <p class="wanted">تغيّر الزمن <span class="f" dir="ltr">t</span> والمدى <span class="f" dir="ltr">x</span></p>
+          </div>
+        </div>
+      </div>
+      <div class="steps"><h3 class="steps-h">خطوات الحل</h3>
+        <div class="step"><span class="step-n">١</span><div class="step-b"><p>زمن الطيران:</p><p class="f-row"><span class="formula" dir="ltr">t = √(2h / g)</span></p><p>فإذا زاد <span class="f" dir="ltr">h</span> <mark>يزيد الزمن <span class="f" dir="ltr">t</span></mark>.</p></div></div>
+        <div class="step"><span class="step-n">٢</span><div class="step-b"><p>المدى الأفقي:</p><p class="f-row"><span class="formula" dir="ltr">x = v<sub>0</sub> · t</span></p><p>السرعة ثابتة والزمن زاد، إذن المدى يزيد.</p></div></div>
+      </div>
+      <p class="answer"><span class="tick">✓</span>زمن الوصول والمدى الأفقي كلاهما يزيد</p>
+      <button class="reveal" type="button">عرض الحل</button>
+    </main>
+    <footer class="pf"><div class="pf-bar">الفيزياء · المقذوف الأفقي</div><div class="pf-num"><span class="pf-circle">١٥</span><span class="pf-grade">تانية<br>بكلوريا</span></div></footer>
+  </div>
+</section></div>
+
+<!-- ================= الصفحة ١٦: المجموعة (ج) - ٥ ================= -->
+<div class="scaler"><section class="page" id="page-16">
+  <i class="corner c-tl"></i><i class="corner c-tr"></i><i class="corner c-br"></i>
+  <div class="sheet">
+    <header class="ph"><span class="ph-pill">حل التقييم الأسبوعي</span><span class="logo logo-s"></span><span class="handle" dir="ltr">@A7med19_7</span></header>
+    <main class="pc">
+      <div class="q"><span class="q-num">٥</span><p>يُطلق جسم أفقيًا بسرعة <span class="f" dir="ltr">3.0 m/s</span> من ارتفاع معين، فيصل إلى الأرض خلال <span class="f" dir="ltr">3.0 s</span>. أوجد المدى الأفقي <span class="f" dir="ltr">(x)</span> والارتفاع <span class="f" dir="ltr">(h)</span>. <span class="f" dir="ltr">(g = 10 m/s<sup>2</sup>)</span></p></div>
+      <div class="mid">
+        <figure class="diagram">%%DIAGRAM:c5%%</figure>
+        <div class="side">
+          <div class="givens">
+            <h4>المعطيات</h4>
+            <div class="g-row"><span>السرعة الأفقية</span><b class="gv" dir="ltr">v<sub>0</sub> = 3.0 m/s</b></div>
+            <div class="g-row"><span>زمن الطيران</span><b class="gv" dir="ltr">t = 3.0 s</b></div>
+            <div class="g-row"><span>الجاذبية</span><b class="gv" dir="ltr">g = 10 m/s<sup>2</sup></b></div>
+            <hr class="g-sep">
+            <h4>المطلوب</h4>
+            <p class="wanted">المدى <span class="f" dir="ltr">x</span> والارتفاع <span class="f" dir="ltr">h</span></p>
+          </div>
+        </div>
+      </div>
+      <div class="steps"><h3 class="steps-h">خطوات الحل</h3>
+        <div class="step"><span class="step-n">١</span><div class="step-b"><p>المدى الأفقي (سرعة ثابتة):</p><p class="f-row"><span class="formula" dir="ltr">x = v<sub>0</sub> · t = 3.0 × 3.0 = 9.0 m</span></p></div></div>
+        <div class="step"><span class="step-n">٢</span><div class="step-b"><p>الارتفاع (سقوط حر من السكون رأسيًا):</p><p class="f-row"><span class="formula" dir="ltr">h = ½ g t<sup>2</sup> = ½ × 10 × (3.0)<sup>2</sup> = 45 m</span></p></div></div>
+      </div>
+      <p class="answer"><span class="tick">✓</span>المدى <span class="f" dir="ltr">x = 9.0 m</span> | الارتفاع <span class="f" dir="ltr">h = 45 m</span></p>
+      <button class="reveal" type="button">عرض الحل</button>
+    </main>
+    <footer class="pf"><div class="pf-bar">الفيزياء · المقذوف الأفقي</div><div class="pf-num"><span class="pf-circle">١٦</span><span class="pf-grade">تانية<br>بكلوريا</span></div></footer>
+  </div>
+</section></div>
+
+<!-- ================= الصفحة ١٧: نصائح قبل الامتحان ================= -->
+<div class="scaler"><section class="page" id="page-17">
+  <i class="corner c-tl"></i><i class="corner c-tr"></i><i class="corner c-br"></i>
+  <div class="sheet">
+    <header class="ph"><span class="ph-pill">حل التقييم الأسبوعي</span><span class="logo logo-s"></span><span class="handle" dir="ltr">@A7med19_7</span></header>
+    <main class="pc">
+      <div class="tips-h"><span class="star">★</span>نصائح قبل الامتحان — لا تُضيّع درجة في هذا الباب</div>
+      <div class="tip"><span class="tip-n">١</span><p>الحركتان الأفقية والرأسية مستقلتان: ادرس كلًا منهما لوحدها، ثم اربطهما بالزمن <span class="f" dir="ltr">t</span>.</p></div>
+      <div class="tip"><span class="tip-n">٢</span><p>زمن الطيران يعتمد على الارتفاع فقط ولا يتأثر بالسرعة الأفقية: <span class="f" dir="ltr">t = √(2h / g)</span>.</p></div>
+      <div class="tip"><span class="tip-n">٣</span><p>المدى الأفقي <span class="f" dir="ltr">x = v<sub>0</sub> · t</span> يزيد بزيادة السرعة الأفقية أو بزيادة الارتفاع (لأن الزمن يزيد).</p></div>
+      <div class="tip"><span class="tip-n">٤</span><p>إن لم تُذكر <span class="f" dir="ltr">g</span> في السؤال فاعتمد القيمة المقررة لديكم (<span class="f" dir="ltr">10</span> أو <span class="f" dir="ltr">9.8 m/s<sup>2</sup></span>) وانتبه لوحدات الزمن والمسافة.</p></div>
+      <div class="banner closing">
+        <div class="brand">
+          <span class="logo logo-m"></span>
+          <div class="brand-tx">
+            <div class="brand-name" dir="ltr">Baccalaureate <svg class="cap" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 L22 9 L12 14 L2 9 Z" fill="#2B2B3A"/><path d="M6 11.4 V16c0 1.6 2.7 3 6 3s6-1.4 6-3v-4.6l-6 3z" fill="#45455C"/><line x1="22" y1="9" x2="22" y2="14" stroke="#D9A441" stroke-width="1.5"/><circle cx="22" cy="15.3" r="1.25" fill="#D9A441"/></svg></div>
+            <div class="wish" dir="ltr">♡ بالتوفيق للجميع — <span class="handle">@A7med19_7</span></div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="pf"><div class="pf-bar">الفيزياء · المقذوف الأفقي</div><div class="pf-num"><span class="pf-circle">١٧</span><span class="pf-grade">تانية<br>بكلوريا</span></div></footer>
+  </div>
+</section></div>
+
+<script>
+/* تصغير الصفحات لتناسب عرض الشاشات الصغيرة (الطباعة دائمًا بالحجم الطبيعي A4) */
+function fitPages(){
+  document.querySelectorAll('.scaler').forEach(function(w){
+    var p=w.querySelector('.page');
+    var naturalW=p.offsetWidth, naturalH=p.offsetHeight;
+    var s=Math.min(1,(window.innerWidth-16)/naturalW);
+    if(s<1){
+      p.style.transform='scale('+s+')';
+      p.style.transformOrigin='top right';
+      w.style.width=(naturalW*s)+'px';
+      w.style.height=(naturalH*s)+'px';
+    }else{
+      p.style.transform=''; w.style.width=''; w.style.height='';
+    }
+  });
+}
+window.addEventListener('resize',fitPages);
+window.addEventListener('load',fitPages);
+fitPages();
+
+/* وضع الاختبار: إخفاء الحلول والتحقق من الاختيارات */
+var quizBtn=document.getElementById('quizBtn');
+quizBtn.addEventListener('click',function(){
+  var on=document.body.classList.toggle('quiz');
+  quizBtn.classList.toggle('on',on);
+  quizBtn.setAttribute('aria-pressed',on);
+  quizBtn.textContent=on?'وضع الاختبار: شغّال (اضغط لعرض كل الحلول)':'وضع الاختبار: إخفاء الحلول';
+  if(!on){document.querySelectorAll('.revealed,.pick-ok,.pick-bad').forEach(function(el){
+    el.classList.remove('revealed','pick-ok','pick-bad');});}
+});
+document.querySelectorAll('.opt').forEach(function(opt){
+  opt.addEventListener('click',function(){
+    if(!document.body.classList.contains('quiz'))return;
+    opt.classList.add(opt.classList.contains('correct')?'pick-ok':'pick-bad');
+  });
+});
+document.querySelectorAll('.reveal').forEach(function(btn){
+  btn.addEventListener('click',function(){btn.closest('.page').classList.add('revealed');});
+});
+</script>
+</body>
+</html>
